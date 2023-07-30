@@ -5,11 +5,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+html{
+    margin: 0;
+    padding: 0;
+    width:100vw;
+}
 body{
-    display: flex;
+    /* display: flex; */
     background-image: linear-gradient( to right, #b2e734, rgb(14, 92, 14));
-    justify-content: center;
+    /* justify-content: center; */
     position: relative;
+    width: 100%;
 
 }
 
@@ -66,7 +72,7 @@ img{
 }
 .card__size span{
     margin-left: 10px;
-    background-color: #c5c6c1;
+    background-color:aliceblue;
     font-size: 25px;
     width: 35px;
     border-radius: 4px;
@@ -116,7 +122,7 @@ img{
     transform: translate(-105px, -70px);
 }
 .card-action{
-    margin-top: 200px;
+    margin-top: 100px;
     opacity: 0;
     transition: 0.5s;
 }
@@ -127,11 +133,13 @@ img{
 .btn__home{
     position: fixed;
     bottom: 50px;
+    left: calc(50% - 50px);
     background-color: #ffffff;
     font-size: 25px;
     border-radius: 10px;
     padding: 10px;
     font-weight: 600;
     color: #3b3b3b;
-    text-decoration: none
+    text-decoration: none;
+
 }
