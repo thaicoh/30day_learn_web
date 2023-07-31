@@ -88,3 +88,29 @@ i:hover{
     color: #3b3b3b;
     text-decoration: none;
 }
+
+@media screen and (min-width: 300px) and (max-width: 767px){
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .card{
+        width: 250px;
+        height: 370px;
+        margin-top: 30px ;
+    }
+    .card__info{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .social{
+        margin: 0 0 30px 0;
+    }
+    .btn{
+       margin-top: 20px;
+       font-size: large;
+    }
+    i{
+        font-size: 20px;
+    }
+}
