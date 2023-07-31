@@ -98,6 +98,7 @@ i:hover{
         width: 250px;
         height: 370px;
         margin-top: 30px ;
+        margin-right: 0px;
     }
     .card__info{
         margin-left: 0;
