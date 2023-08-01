@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta name="viewport" content="minimum-scale=1"/> -->
+        <meta name="viewport" content="height=device-height, 
+                      width=device-width, initial-scale=1.0, 
+                      minimum-scale=1.0, maximum-scale=1.0, 
+                      user-scalable=no, target-densitydpi=device-dpi">
+        <title>modal popup</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <button class="btn__popup">
+                click
+            </button>
+            <div class="bg-popup">
+                <div class="popup">
+                    <div class="popup__header">
+                        <h4>Welcome to my popup</h4>
+                        <button class="btn__x">x</button>
+                    </div>
+                    <div class="popup__body">
+                        <h2>Modal</h2>
+                        <p>This is Popup body</p>
+                        <button class="btn__close"> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let click = document.getElementsByClassName("btn__popup")[0];
+            let btnX = document.getElementsByClassName("btn__x")[0];
+            let btnClose = document.getElementsByClassName("btn__close")[0];
+            let popup = document.getElementsByClassName("bg-popup")[0];
+            let popupBox = document.getElementsByClassName("popup")[0];
+
+            btnX.addEventListener("click",() => {
+                    popup.style.display = "none";
+                    popupBox.classList.toggle("animation");
+                    console.log('chao')
+
+            })
+
+            btnClose.addEventListener("click",() => {
+                    popup.style.display = "none";
+                    popupBox.classList.toggle("animation");
+                    console.log('chao')
+
+            })
+
+            click.addEventListener("click", () => {
+                popup.style.display = "block";
+                setTimeout(() =>{
+                popupBox.classList.toggle("animation");
+               }, 300);
+            })
+            popup.addEventListener("click", (e) => {
+                if(e.target == e.currentTarget){
+                    popupBox.classList.toggle("animation");
+                    popup.style.display = "none";
+                    console.log('chao')
+                    
+                    
+                }
+            })
+
+
+        </script>
+    </body>
+</html>

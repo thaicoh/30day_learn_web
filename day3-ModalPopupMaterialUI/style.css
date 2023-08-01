@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient( to right, #bb00ff, rgb(47, 255, 248) );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn__popup{
+    margin: auto;
+    font-size: x-large;
+    width: 8rem;
+    height: 3rem;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.btn__popup:hover{
+    background-color:  rgba(255, 110, 53, 0.969);
+    color: aliceblue;
+    border: 1px solid rgb(255, 255, 255);
+}
+.bg-popup{
+    position: relative;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0, 0, 0.5);
+    display: none;
+}
+.popup{
+    background-color: aliceblue;
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: 0.5s ease;
+    opacity: 0;
+}
+.animation{
+    
+    top: 50%;
+    opacity: 1;
+}
+.popup__header{
+    height: 25%;
+    display: flex;
+    background-color: rgba(248, 109, 54, 0.969);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: aliceblue;
+}
+.btn__x{ 
+    border: none;
+    background-color: rgba(248, 109, 54, 0.969);
+    width: 20px;
+    height: 20px;
+    color: aliceblue;
+    font-size: larger;
+    font-weight: 600;
+}
+.btn__x:hover{
+    color: rgb(20, 11, 11);
+}
+.popup__body{
+ position: relative;
+ height: 75%;
+}
+.popup__body h2{
+    color:  rgba(248, 109, 54, 0.969);
+    margin: 10px;
+}
+.popup__body p{
+    margin: 10px;
+}
+.popup__body .btn__close{
+    margin: 10px;
+    margin-bottom: 20px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background-color:  rgba(248, 109, 54, 0.969);
+    color: aliceblue;
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+.btn__close:hover{
+    color: black;
+    background-color:  rgba(255, 128, 0, 0.969);
+}
