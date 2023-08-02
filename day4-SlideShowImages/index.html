@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.min.css">
+
+<title>Title</title>
+</head>
+<body>
+    <div class="container">
+        <div class="slide">
+            <div class="img">
+                <img src="img/1.webp" alt=""> 
+            </div>
+            <div class="img">
+                <img src="img/2.jpeg" alt=""> 
+            </div>
+            <div class="img">
+                <img src="img/3.jpeg" alt="">
+            </div>
+            <div class="img">
+                <img src="img/4.jpeg" alt="">
+            </div>
+            <div class="img">
+                <img src="img/5.webp" alt="">
+            </div>
+            <div class="img">
+                <img src="img/6.jpeg" alt="">
+            </div>
+            <div class="img">
+                <img src="img/7.jpeg" alt="">
+            </div>
+            <div class="img">
+                <img src="img/8.webp" alt="">
+            </div>
+        </div>
+        <div class="show">
+            <div class="icon__close">
+                <i class="fa-solid fa-x"></i>
+            </div>
+            <div class="icon__next">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <div class="icon__pre">
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="show__img">
+                <img src="" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let imgs = document.querySelectorAll(".img img");
+        let divShow = document.querySelector(".show");
+        let imgShow = document.querySelector(".show__img img");
+        let iconClose = document.querySelector(".icon__close");
+        let iconNext = document.querySelector(".icon__next");
+        let iconPrev = document.querySelector(".icon__pre");
+        let index = 0;
+        let show = () => {
+            imgShow.src = imgs[index].src;
+            divShow.style.display = "flex";
+        }
+
+        imgs.forEach((e, i)=>{
+            e.addEventListener("click", ()=>{
+                index = i;
+                show();
+            })
+        })
+
+        iconClose.addEventListener("click", ()=>{
+            divShow.style.display = "none";
+        })
+        document.addEventListener("keydown", (e)=>{
+            if(e.keyCode == 27){
+                divShow.style.display = "none";
+            }
+        })
+        
+        iconNext.addEventListener("click", ()=>{
+            if(index===(imgs.length-1)){
+                index = 0;
+            }else{
+                index += 1;
+            }
+            show();
+        })
+        iconPrev.addEventListener("click", ()=>{
+            if(index===0){
+                index = imgs.length - 1;
+            }else{
+                index -= 1;
+            }
+            show();
+        })
+        
+    </script>
+</body>
+</html>
