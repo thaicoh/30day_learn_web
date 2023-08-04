@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="alert">
+            <div class="mess">
+                <h1>Press any key</h1>
+            </div>
+        </div>
+        <div class="show">
+            <div class="result">30</div>
+            <div class="detail">
+                <div class="key">
+                    <h3>Key</h3>
+                    <p>32</p>
+                </div>
+                <div class="location">
+                    <h3>Location</h3>
+                    <p>32</p>
+                </div>
+                <div class="which">
+                    <h3>which</h3>
+                    <p>32</p>
+                </div>
+                <div class="code">
+                    <h3>Code</h3>
+                    <p>32</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let alert = document.querySelector(".alert");
+        let divShow = document.querySelector(".show");
+        let key = document.querySelector(".key p");
+        let location1 = document.querySelector(".location p");
+        let which = document.querySelector(".which p");
+        let code = document.querySelector(".code p");
+        let result = document.querySelector(".result")
+        let show = (e1, e2) =>{
+            if( e2.style.display != "none" ){
+                e1.classList.toggle("hidden");
+                e2.style.display = "none";
+            }
+        }
+        
+        document.addEventListener("keydown", (e) => {
+            show(divShow,alert);
+            result.innerHTML = e.keyCode;
+            key.innerHTML = e.key;
+            location1.innerHTML = e.location;
+            which.innerHTML = e.which;
+            code.innerHTML = e.code;
+            console.log(e);
+        })
+    </script>
+</body>
+</html>

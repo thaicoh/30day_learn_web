@@ -22,21 +22,16 @@
         let btn = document.querySelector('.search__btn');
         let input = document.querySelector('.search__box input');
         let first = true;
-        console.log(btn)
-        console.log(input)
         btn.addEventListener("click", ()=>{
-            console.log('chay')
             input.classList.toggle("w-100");
             if(first){
                 btn.classList.toggle("border");
             }else{
                 setTimeout(()=>{
                     btn.classList.toggle("border");
-                }, 500) 
+                }, 500)
             }
-            first=!first;
-            
-            
+            first=!first;    
         })
     </script>
 </body>

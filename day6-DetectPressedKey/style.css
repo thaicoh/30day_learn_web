@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to right, rgb(93, 225, 93), rgb(11, 123, 221));
+}
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.alert{
+    color: aliceblue;
+    background-color: aqua;
+    font-size: 30px;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+     rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+      rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+       rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+        rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+         rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.show{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    display: none;
+}
+.result{
+    font-size: 100px;
+    color: aliceblue;
+    border:solid 9px aliceblue;
+    height: 200px;
+    width: 200px;
+    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-weight: 700;
+    margin: 30px 100px;
+}
+.detail{
+    display: flex;
+}
+.key, .location ,.which, .code{
+    margin: 25px;
+    width: 250px;
+    height: 90px;
+    background-color: aliceblue;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+.key h3, .location h3,.which h3,.code h3{
+    background-color: rgb(28, 179, 206);
+    padding: 10px;
+    font-size: 20px;
+    color: aliceblue;
+}
+.key p, .location p,.which p,.code p{
+    padding: 10px;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+}
+
+.hidden{
+    display: flex;
+}
