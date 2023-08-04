@@ -5,7 +5,7 @@
 body{
     width: 100vw;
     height: 100vh;
-    background-image: linear-gradient(to right, rgb(93, 225, 93), rgb(11, 123, 221));
+    background-image: linear-gradient(to right, rgb(151, 255, 151), rgb(11, 123, 221));
 }
 .container{
     width: 100%;
