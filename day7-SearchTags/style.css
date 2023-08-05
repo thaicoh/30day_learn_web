@@ -6,7 +6,7 @@ body{
     box-sizing: border-box;
     width: 100vw;
     height: 100vh;
-    background-color:#b6e545;
+    background-color:#8cc84c;
 }
 .container{
     width: 100%;
@@ -20,12 +20,15 @@ body{
     width: 550px;
     padding: 20px;
     border-radius: 10px;
+    overflow: hidden;
+    margin: 25px;
 }
 
 .search h2{
     font-size: xx-large;
     margin-bottom: 20px;
     color: black;
+    
 }
 .search__box{
     box-sizing: border-box;
@@ -35,6 +38,7 @@ body{
     display:flex;
     flex-wrap: wrap;
     border-radius: 10px;
+    overflow: hidden;
 }
 .items{
     display: flex;
@@ -47,14 +51,14 @@ body{
     justify-content: center;
     align-items: center;
     display: flex;
-    background-color:#b6e545;
+    background-color:#8cc84c;
     padding: 10px;
     margin: 5px 5px 0 0;
     border-radius: 5px;
 }
 .icon{
     font-size: 20px;
-    margin: 0 8px;
+    margin: 0  2px  0  10px;
 }
 input{
     font-size: x-large;
@@ -68,8 +72,8 @@ button{
     font-size: 20px;
     padding: 10px;
     margin-top: 30px;
-    background-color:#b6e545;
+    background-color:#8cc84c;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     color: aliceblue;
 }
