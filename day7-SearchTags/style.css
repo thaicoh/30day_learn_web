@@ -71,8 +71,8 @@ input{
 button{
     font-size: 20px;
     padding: 10px;
-    margin-top: 30px;
-    background-color:#8cc84c;
+    margin-top: 35px;
+    background-color: rgb(215, 109, 109);
     border: none;
     border-radius: 5px;
     color: aliceblue;
