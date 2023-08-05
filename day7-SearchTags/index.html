@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="search">
+            <h2>Search Tags</h2>
+            <div class="search__box">
+                <div class="items">
+                    <div class="item">
+                        <p>Javascript</p>
+                        <div class="icon"><i class="fa-solid fa-x"></i></div>
+                    </div>
+                    <div class="item">
+                        <p>C#</p>
+                        <div class="icon"><i class="fa-solid fa-x"></i></div>
+                    </div>
+                    <div class="item">
+                        <p>Python</p>
+                        <div class="icon"><i class="fa-solid fa-x"></i></div>
+                    </div>
+                </div>
+                <input type="text" placeholder="Type something ...">
+            </div>
+            <button>Remove all</button>
+        </div>
+    </div>
+    <script>
+        
+        let input = document.querySelector("input");
+        let btn = document.querySelector("button");
+        let items = document.querySelector(".items");
+       
+        let iconX = document.querySelectorAll(".icon");
+
+        btn.addEventListener("click", ()=>{
+            items.innerHTML = "";
+        })
+
+        let addItem = () => {
+            items.insertAdjacentHTML("beforeend", `
+                <div class="item">
+                        <p>${input.value.trim()}</p>
+                        <div class="icon"><i class="fa-solid fa-x"></i></div>
+                </div>
+            `)
+        }
+        let RemoveItem = () => {
+            let items = document.querySelector(".items");
+            let iconX = document.querySelectorAll(".icon");
+            let item = document.querySelectorAll(".item");
+            iconX.forEach(( e , index)=> {
+            e.addEventListener("click", (ee) =>{
+                console.log(ee, index);
+                item[index].remove();
+            })
+        });
+
+        }
+        RemoveItem();
+        input.addEventListener("keypress", (e) => {
+            if(e.key === "Enter"){
+                console.log(input.value);
+                if(input.value.trim() !== ''){
+                    addItem();
+                }
+                input.value ='';
+                RemoveItem();
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -37,7 +37,7 @@
         </div>
     </div>
     <script>
-        let alert = document.querySelector(".alert");
+        let alert1 = document.querySelector(".alert");
         let divShow = document.querySelector(".show");
         let key = document.querySelector(".key p");
         let location1 = document.querySelector(".location p");
@@ -52,7 +52,7 @@
         }
         
         document.addEventListener("keydown", (e) => {
-            show(divShow,alert);
+            show(divShow,alert1);
             result.innerHTML = e.keyCode;
             key.innerHTML = e.key;
             location1.innerHTML = e.location;
