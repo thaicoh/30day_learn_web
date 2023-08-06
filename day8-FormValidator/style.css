@@ -89,10 +89,10 @@ button:hover{
     font-size: 32px;
 }
 .error{
-    border-bottom: 3px solid rgb(255, 102, 102) !important;
+    border-bottom: 3px solid rgb(168, 3, 3) !important;
 }
 small{
-    color: rgb(255, 101, 101);
+    color: rgb(168, 3, 3);
     font-size: 20px;
     opacity: 0;
 }
