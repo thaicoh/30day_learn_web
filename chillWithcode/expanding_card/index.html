@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>hi</title>
+</head>
+<body>
+        <div class="container">
+            <div class="list">
+                <div class="img big">
+                    <img src="img/pexels-photo-1081685.webp" alt="">
+                    <p>demo img</p>
+                </div>
+                <div class="img">
+                    <img src="img/2.jpeg" alt="">
+                    <p>demo img</p>
+                </div>
+                <div class="img">
+                    <img src="img/3.jpeg" alt="">
+                    <p>demo img</p>
+                </div>
+                <div class="img">
+                    <img src="img/4.jpeg" alt="">
+                    <p>demo img</p>
+                </div>
+                <div class="img">
+                    <img src="img/5.jpeg" alt="">
+                    <p>demo img</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            let imgs = document.querySelectorAll(".img");
+            imgs.forEach((e)=>{
+                e.addEventListener("click", (ee)=>{
+                    imgs.forEach((e) => {
+                        if(e.classList.contains("big")){
+                            e.classList.toggle("big");
+                            ee.currentTarget.classList.toggle("big");
+                        }
+                    })
+                })
+            })
+        </script>
+</body>
+</html>

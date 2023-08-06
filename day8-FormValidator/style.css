@@ -1,0 +1,116 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("img/wallpapersden.com_forest-road-aerial-4k-photography-2022_3992x2992.jpg");
+    background-size: cover;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    border: 4px solid #253325;
+    border-radius: 50%;
+    padding: 20px;
+    margin: 0 150px 0 150px;
+}
+.icon i{
+    font-size: 50px;
+    color:#253325;
+}
+.form{
+    margin: 50px;
+    box-sizing: border-box;
+    width: 450px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
+.form h1{
+ color: #253325;
+ font-size:45px;
+}
+.form__gr{
+    margin: 19px 0;
+    position: relative;
+}
+form{
+    width: 100%;
+}
+form .form__gr input{
+    width: 100%;
+    outline: none;
+    font-size: x-large;
+    border: none;
+    border-bottom: 3px solid rgb(155, 153, 153);
+}
+form .form__gr label{
+    font-size: large;
+}
+span{
+    position: absolute;
+    width: 0%;
+    height: 3px;
+    background-color: black;
+    color: black;
+    left: 0;
+    bottom: calc(0% + 23.5px);
+    transition: 0.5s;
+}
+.w-100{
+    background-color: #253325;
+    width: 100% !important;
+}
+button{
+    margin: auto;
+    font-size: xx-large;
+    margin: 20px 0;
+    background-color: #253325;
+    border: none;
+    border-radius: 25px;
+    padding:9px 70px;
+    color: aliceblue;
+    box-sizing: border-box;
+    transition: 0.4s;
+}
+button:hover{
+    background-color: #0e430e;
+    font-size: 32px;
+}
+.error{
+    border-bottom: 3px solid rgb(255, 102, 102) !important;
+}
+small{
+    color: rgb(255, 101, 101);
+    font-size: 20px;
+    opacity: 0;
+}
+.fa-eye-slash{
+    position: absolute;
+    right: 0;
+    bottom: calc(0% + 29px);
+    color:  rgb(94, 94, 94) ;
+}
+.fa-eye{
+    position: absolute;
+    right: 0;
+    bottom: calc(0% + 29px);
+    color:  rgb(94, 94, 94) ;
+}
+.hidden{
+    display: none !important;
+}
+a{
+    color: #253325;
+}

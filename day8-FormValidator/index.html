@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <div class="icon">
+                <i class="fa-solid fa-user"></i>
+            
+            </div>
+            <h1>sign up</h1>
+            <form>
+                <div class="form__gr">
+                    <input type="text" placeholder = "User Name" id="username">
+                    <span></span>
+                    <small>error</small>
+                </div>
+                <div class="form__gr">
+                    <input placeholder = "Mail" type="email" id="mail">
+                    <span></span>
+                    <small>erorr</small>
+                </div>
+                <div class="form__gr">
+                    <input placeholder = "Password" type="password" id="password">
+                    <i class="fa-solid fa-eye hidden"></i>
+                    <i class="fa-solid fa-eye-slash hidden"></i>
+                    <span></span>
+                    <small>erorr</small>
+                </div>
+                <div class="form__gr">
+                    <input placeholder = "Confirm Password" type="password" id="password2">
+                    <i class="fa-solid fa-eye hidden"></i> 
+                    <i class="fa-solid fa-eye-slash hidden"></i>
+                    <span></span>
+                    <small>error</small>
+                </div>
+                
+            </form>
+            <button>Sign up</button>
+            <p>You have account? <a href="">login</a></p>
+        </div>
+    </div>
+    <script>
+        let input = document.querySelectorAll("input");
+        let span = document.querySelectorAll("span");
+        let small = document.querySelectorAll("small");
+        let btn = document.querySelector("button");
+        let username = document.querySelector("#username");
+        let mail = document.querySelector("#mail");
+        let password = document.querySelector("#password");
+        let password2 = document.querySelector("#password2");
+        input.forEach((e, index) => {
+            e.addEventListener("focus", () => {
+                span[index].classList.add('w-100');
+            })
+            e.addEventListener("blur", () => {
+                span[index].classList.toggle('w-100');
+            })
+        })
+
+        let addError = (index,str) => {
+            small[index].innerHTML = str;
+            small[index].style.opacity = "1";
+            input[index].classList.add("error");
+        }
+        let removeError = (index) => {
+            small[index].style.opacity = "0";
+            input[index].classList.remove("error");
+        }
+        let nullError = (index) => {
+            if(input[index].value.trim() === ''){
+                addError(index,"Khong duoc de trong muc nay");
+            }else{
+                removeError(index);
+            }
+        }
+        btn.addEventListener('click', () => {
+            usernameError(); 
+            mailError();
+            passwordError();
+            matchPassword();
+            if(usernameError() && mailError() && passwordError() && matchPassword()){
+                alert("dang ky thanh cong! ");
+            }
+        })
+        let usernameError = () => {
+            if(username.value.trim() === ''){
+                nullError(0);
+                return false;
+            } else if(username.value.trim().length < 8 ){
+                addError(0," Ten nguoi dung phai co it nhat 8 ki tu!");
+                return false;
+            } else {
+                removeError(0);
+                return true;
+            }
+        }
+        let mailError = () => {
+            if(mail.value.trim() == ''){
+                nullError(1);
+                return false;
+            }else if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail.value.trim()) === false){
+                addError(1,"Gmail cua ban khong hop le!");
+                return false;
+            }else if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail.value.trim())){
+                removeError(1);
+                return true;
+            }
+        }
+        let passwordError = () => {
+            if(password.value.trim() === ''){
+                nullError(2);
+                return false;
+            }else if(password.value.trim().length<8){
+                addError(2, "Mat khau phai co it nhat 8 ki tu");
+                return false;
+            } else{
+                removeError(2);
+                return true;
+            }
+        }
+        let matchPassword = () => {
+            if(password2.value.trim() === ''){
+                nullError(3);
+                return false;
+            }
+            else if(password.value.trim() != password2.value.trim()){
+                addError(3, "mat khau khong khop!");
+                return false;
+            }else{
+                removeError(3);
+                return true;
+            }
+        }
+        let eye = () => {
+            let eye1 = document.querySelectorAll('.fa-eye')[0];
+            let eye2 = document.querySelectorAll('.fa-eye-slash')[0];
+            if(password.value != ''){
+                eye1.classList.remove("hidden")
+                eye1.addEventListener('click', () => {
+                    password.type ='text';
+                    eye1.classList.add("hidden");
+                    eye2.classList.remove("hidden");
+                })
+                eye2.addEventListener('click', () => {
+                    password.type ='password';
+                    eye2.classList.add("hidden");
+                    eye1.classList.remove("hidden");
+                })
+            }else{
+                eye1.classList.add("hidden");
+                eye2.classList.add("hidden");
+            }
+        }
+        let eyeP2 = () => {
+            let eye1 = document.querySelectorAll('.fa-eye')[1];
+            let eye2 = document.querySelectorAll('.fa-eye-slash')[1];
+            if(password2.value != ''){
+                eye1.classList.remove("hidden")
+                eye1.addEventListener('click', () => {
+                    password2.type ='text';
+                    eye1.classList.add("hidden");
+                    eye2.classList.remove("hidden");
+                })
+                eye2.addEventListener('click', () => {
+                    password2.type ='password';
+                    eye2.classList.add("hidden");
+                    eye1.classList.remove("hidden");
+                })
+            }else{
+                eye1.classList.add("hidden");
+                eye2.classList.add("hidden");
+            }
+        }
+        password.addEventListener('keydown', () => {
+            eye();
+        })
+        password.addEventListener('blur', () => {
+            eye();
+        })
+        password2.addEventListener('keydown', () => {
+            eyeP2();
+        })
+        password2.addEventListener('blur', () => {
+            eyeP2();
+        })
+
+        
+        // input.forEach((e, i) => {
+        //     e.addEventListener('blur', () => {
+        //         if(e.value != ''){
+        //             removeError(i);
+        //         }
+        //     })
+        // })
+
+
+
+    </script>
+</body>
+</html>

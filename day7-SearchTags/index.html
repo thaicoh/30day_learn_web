@@ -37,7 +37,6 @@
         let btn = document.querySelector("button");
         let items = document.querySelector(".items");
         let iconX = document.querySelectorAll(".icon");
-
         btn.addEventListener("click", ()=>{
             items.innerHTML = "";
         })
@@ -51,16 +50,15 @@
             `)
         }
         let RemoveItem = () => {
-            let items = document.querySelector(".items");
-            let iconX = document.querySelectorAll(".icon");
-            let item = document.querySelectorAll(".item");
-            iconX.forEach(( e , index)=> {
-            e.addEventListener("click", (ee) =>{
-                console.log(ee, index);
-                item[index].remove();
-            })
-        });
-
+                let items = document.querySelector(".items");
+                let iconX = document.querySelectorAll(".icon");
+                let item = document.querySelectorAll(".item");
+                iconX.forEach(( e , index)=> {
+                    e.addEventListener("click", (ee) =>{
+                        console.log(ee, index);
+                        item[index].remove();
+                    })
+                });
         }
         RemoveItem();
         input.addEventListener("keypress", (e) => {
