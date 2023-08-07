@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="weather">
+            <input class = "search" type="text" placeholder="Search...">
+            <div class="filter">
+               
+            </div>
+            <div class="location">
+                <span class="city"></span>, <span class = "country"></span>
+            </div>
+            <div class="time">
+                <span></span>
+            </div>
+            <div class="temperature">
+                <span id="temp"></span><sup>o</sup><span>C</span>
+            </div>
+            <div class="desc">
+                Clouds
+            </div>
+            <div class="info">
+                <div class="vision">
+                    <i class="fa-regular fa-eye"></i>
+                    <p>1000 (m)</p>
+                </div>
+                <div class="wind">
+                    <i class="fa-solid fa-wind"></i>
+                    <p>60 (m/s)</p>
+                </div>
+                <div class="sun">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                    <p>50 %</p>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <script>
+        const btn = document.querySelector(".search");
+        // var  city = document.querySelector(".city");
+        // var country = document.querySelector(".country");
+        // var  time = document.querySelector(".time span");
+        // var temp = document.querySelector("#temp");
+        // var desc = document.querySelector(".desc");
+        // var vision = document.querySelector(".vision p");
+        // var  wind = document.querySelector(".wind p");
+        // var sun = document.querySelector(".sun p");
+        // var body = document.querySelector('body');
+        var search = document.querySelector('.search');
+        var filter = document.querySelector(".filter");
+        var item = document.querySelector(".item");
+
+        let arrLocation = [
+            "Ho Chi Minh",
+            "Ha Noi", 
+            "Da Nang",
+            "Da Lat",
+            "Sa Pa", 
+            "Nha Trang",
+            "Vung Tau",
+            "Cao Bang",
+            "Can Tho",
+            "An Giang",
+            "Binh Duong",
+            "Long An",
+            "Thu Duc","Hai Phong","Nam Dinh","Tam Ky","Cho Dok","Phu My","Tokyo",
+            "Can Gio","Sa Dec","Long Xuyen","Ben Tre","Thu Dau Mot","Bien Hoa","Phan Thiet","Son La","Bac Can","Ha Giang",
+            "Thai Nguyen", "Bac Giang", "Vinh", "Vinh Yen","Bac Lieu", "Ca Mau", "Rach Gia","Cao Lanh", "Vinh Long","Soc Trang",
+            "Tra Vinh", "My Tho","Buon Ma Thuoc","Qui Nhon","Kon Tum", "Hue"
+        ]
+        function randerItem(){
+            var filter = document.querySelector(".filter");
+            filter.innerHTML = '';
+            arrLocation.forEach((e, index) => {
+                filter.insertAdjacentHTML("beforeend", 
+                `<div class="item">${e}</div>`
+                )
+            })
+        }
+        function removeItems(){
+            var filter = document.querySelector(".filter");
+            filter.innerHTML = '';
+        }
+        randerItem();
+        function filterItems (value) {
+            var filter = document.querySelector(".filter");
+            randerItem();
+            var items = document.querySelectorAll(".item");
+            value = value.toLowerCase();
+            items.forEach((e) => {
+                if(e.innerText.toLowerCase().includes(value) && value !==''){
+                    e.style.display = "block";
+                }else {
+                    e.style.display = "none";
+                }
+            })
+        }
+
+        search.addEventListener("input", (e)=>{
+            console.log(search.value);
+            filterItems(search.value);
+            var items = document.querySelectorAll(".item");
+            items.forEach((e) => {
+                e.addEventListener('click', (e)=>{
+                    removeItems();
+                    changeWeather(e.target.innerText);
+                    search.value='';
+                })
+            })
+        })
+        // function randerItem(value){
+        //     filter.innerHTML = '';
+        //     arrLocation.forEach((e, index) => {
+        //         if(e === value){
+
+        //         }
+        //     })
+        // }
+
+        async function changeWeather(city) {
+            let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=fc1927bdff110fdc4405bc2e4a1f29c6`
+            let data = await fetch(apiUrl).then(res => res.json());
+            var  city = document.querySelector(".city");
+            var country = document.querySelector(".country");
+            var  time = document.querySelector(".time span");
+            var temp = document.querySelector("#temp");
+            var desc = document.querySelector(".desc");
+            var vision = document.querySelector(".vision p");
+            var  wind = document.querySelector(".wind p");
+            var sun = document.querySelector(".sun p");
+            var body = document.querySelector('body');
+            var weather = document.querySelector('.weather');
+
+            city.innerText = data.name;
+            country.innerText = data.sys.country;
+            time.innerText = new Date().toLocaleString('vi');
+            temp.innerText =Math.round((data.main.temp - 273.15));
+            desc.innerText = data.weather[0].main;
+            vision.innerText = data.visibility + ` (m)`;
+            wind.innerText = data.wind.speed + ` (m/s)`;
+            sun.innerText = data.main.humidity + `%`;
+            let newBackgroundURL = "imgs/cold.jpg";
+            if(Math.round((data.main.temp - 273.15)) <= 22 ){
+                 newBackgroundURL = "imgs/cold.jpg";
+            } else if(Math.round((data.main.temp - 273.15)) <= 33 ){
+                 newBackgroundURL = "imgs/warm.jpeg";
+            } else{
+                 newBackgroundURL = "imgs/hot.webp";
+            }
+            body.style.background = `linear-gradient(to bottom , rgba(0, 0 , 0, 0.6), rgba(0, 0, 0, 0.9)), url("${newBackgroundURL}") no-repeat center/cover`;
+            weather.style.background = `url("${newBackgroundURL}") no-repeat center/cover`;
+            
+        }
+
+        btn.addEventListener('keypress', (e) => {
+           if(e.code === "Enter"){
+                removeItems();
+                changeWeather(btn.value.trim());
+                search.value='';
+           }
+        })
+        
+        
+        changeWeather("ho chi minh");
+
+    </script>
+</body>
+</html>

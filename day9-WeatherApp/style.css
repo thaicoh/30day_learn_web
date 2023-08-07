@@ -1,0 +1,110 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: aquamarine;
+    background: linear-gradient(to bottom , rgba(0, 0 , 0, 0.6), rgba(0, 0, 0, 0.9)) , url("imgs/cold.jpg") no-repeat center/cover;
+}   
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.weather{
+    background: url("imgs/cold.jpg") no-repeat center/cover;
+    padding: 25px;
+    border-radius: 15px;
+    width: 350px;
+    height: 550px;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+
+}
+.search{
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 0 15px 0 15px;
+    font-size: 19px;
+    transition: 0.5s;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.search:focus{
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 15px 0  15px 0;
+}
+.location{
+    font-size: 30px;
+    font-weight: 900;
+    margin: 25px 0 10px 0;
+    text-shadow:3px 3px rgba(0, 0, 0, 0.7);
+}
+.time{
+   font-size: 19px;
+   text-shadow:1px 1px rgba(0, 0, 0, 1);
+}
+.temperature{
+    font-size: 70px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px 25px;
+    font-weight: 900;
+    text-shadow:3px 3px rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin: 15px;
+}
+.filter{
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    left: 0;
+    margin-left: 25px;
+    top:calc(0% + 67px);
+    width: 55%;
+    height: fit-content;
+    max-height: 400px;
+    overflow: auto;
+}
+.item{
+    font-size: 22px;
+    padding: 10px 10px;
+    cursor: pointer;
+    display: none;
+}
+.item:hover{
+    background-color: rgb(205, 214, 214);
+}
+
+.desc{
+    margin-top: 20px;
+    font-size: 45px;
+    font-weight: 900;
+    text-shadow:3px 3px rgba(0, 0, 0, 0.7);
+}
+.info{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px 0;
+    font-size: 18px;
+}
+.info div{
+    text-align: center;
+}
+i{
+    margin: 8px;
+}

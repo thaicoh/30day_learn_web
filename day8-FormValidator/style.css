@@ -29,7 +29,7 @@ body{
     margin: 50px;
     box-sizing: border-box;
     width: 450px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(161, 179, 166);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,11 +49,13 @@ form{
     width: 100%;
 }
 form .form__gr input{
+    background-color: rgb(161, 179, 166) !important;
     width: 100%;
     outline: none;
     font-size: x-large;
     border: none;
-    border-bottom: 3px solid rgb(155, 153, 153);
+    color: rgb(0, 0, 0);
+    border-bottom: 3px solid rgb(195, 195, 195) ;
 }
 form .form__gr label{
     font-size: large;

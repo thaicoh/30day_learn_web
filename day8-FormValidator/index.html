@@ -86,7 +86,9 @@
             passwordError();
             matchPassword();
             if(usernameError() && mailError() && passwordError() && matchPassword()){
-                alert("dang ky thanh cong! ");
+                setTimeout(()=>{
+                    alert("Ban da dang ky thanh cong! ");
+                }, 300)
             }
         })
         let usernameError = () => {
@@ -192,13 +194,11 @@
         })
 
         
-        // input.forEach((e, i) => {
-        //     e.addEventListener('blur', () => {
-        //         if(e.value != ''){
-        //             removeError(i);
-        //         }
-        //     })
-        // })
+        input.forEach((e, i) => {
+            e.addEventListener('keydown', () => {
+                
+            })
+        })
 
 
 
