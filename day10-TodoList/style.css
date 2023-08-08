@@ -42,6 +42,11 @@ body{
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     
 }
+p{
+    max-width: 400px !important;
+    word-wrap: break-word; /* Tự động xuống hàng khi vượt quá chiều rộng */
+    overflow-wrap: break-word; 
+}
 .btn__add:hover{
     background-color: rgb(32, 223, 160);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -67,6 +72,7 @@ body{
     border-bottom: 1px solid rgb(164, 164, 164);
     font-size: 22px;
     cursor: pointer;
+    align-items: center;
 }
 .item:hover{
     background-color: rgb(227, 227, 227);
