@@ -21,7 +21,7 @@
                 <span></span>
             </div>
             <div class="temperature">
-                <span id="temp"></span><sup>o</sup><span>C</span>
+                <span id="temp"></span><sup> o</sup><span>C</span>
             </div>
             <div class="desc">
                 Clouds
@@ -58,22 +58,18 @@
         var item = document.querySelector(".item");
 
         let arrLocation = [
-            "Ho Chi Minh",
-            "Ha Noi", 
-            "Da Nang",
-            "Da Lat",
-            "Sa Pa", 
-            "Nha Trang",
-            "Vung Tau",
-            "Cao Bang",
-            "Can Tho",
-            "An Giang",
-            "Binh Duong",
-            "Long An",
-            "Thu Duc","Hai Phong","Nam Dinh","Tam Ky","Cho Dok","Phu My","Tokyo",
-            "Can Gio","Sa Dec","Long Xuyen","Ben Tre","Thu Dau Mot","Bien Hoa","Phan Thiet","Son La","Bac Can","Ha Giang",
-            "Thai Nguyen", "Bac Giang", "Vinh", "Vinh Yen","Bac Lieu", "Ca Mau", "Rach Gia","Cao Lanh", "Vinh Long","Soc Trang",
-            "Tra Vinh", "My Tho","Buon Ma Thuoc","Qui Nhon","Kon Tum", "Hue"
+            "Ho Chi Minh","Phan Thiet", "Ca Mau","Hoi An",
+            "Ha Noi", "Cao Lanh", "Vinh Long","Long An",
+            "Da Nang","Tokyo","Qui Nhon","Long Xuyen",
+            "Da Lat","Ben Tre","Thu Dau Mot","Bien Hoa",
+            "Sa Pa", "Tra Vinh", "My Tho","Nam Dinh",
+            "Nha Trang","Thai Nguyen", "Bac Giang",
+            "Vung Tau","Tam Ky","Cho Dok","Phu My",
+            "Cao Bang", "Vinh", "Vinh Yen","Bac Lieu",
+            "Can Tho","Soc Trang","Can Gio","Sa Dec",
+            "An Giang","Son La","Bac Can","Ha Giang",
+            "Binh Duong","Rach Gia","Hai Phong","Hue",
+            "Thu Duc","Kon Tum", "Buon Ma Thuoc"
         ]
         function randerItem(){
             var filter = document.querySelector(".filter");
@@ -88,44 +84,51 @@
             var filter = document.querySelector(".filter");
             filter.innerHTML = '';
         }
-        randerItem();
-        function filterItems (value) {
-            var filter = document.querySelector(".filter");
-            randerItem();
-            var items = document.querySelectorAll(".item");
+       
+        function filterItems(value) {
+            let filter = document.querySelector(".filter");
+            // randerItem();
+            let items = document.querySelectorAll(".item");
             value = value.toLowerCase();
             items.forEach((e) => {
-                if(e.innerText.toLowerCase().includes(value) && value !==''){
+                if(e.innerText.toLowerCase().includes(value) && value.trim() !==''){
                     e.style.display = "block";
                 }else {
                     e.style.display = "none";
                 }
             })
         }
-
+        
         search.addEventListener("input", (e)=>{
+            randerItem();
             console.log(search.value);
             filterItems(search.value);
-            var items = document.querySelectorAll(".item");
+            let items = document.querySelectorAll(".item");
             items.forEach((e) => {
                 e.addEventListener('click', (e)=>{
                     removeItems();
+                    console.log(e.target.innerText);
                     changeWeather(e.target.innerText);
                     search.value='';
                 })
             })
         })
-        // function randerItem(value){
-        //     filter.innerHTML = '';
-        //     arrLocation.forEach((e, index) => {
-        //         if(e === value){
-
-        //         }
+            
+        // search.addEventListener("focus", (e)=>{
+        //     console.log(search.value);
+        //     filterItems(search.value);
+        //     var items = document.querySelectorAll(".item");
+        //     items.forEach((e) => {
+        //         e.addEventListener('click', (e)=>{
+        //             removeItems();
+        //             changeWeather(e.target.innerText);
+        //             search.value='';
+        //         })
         //     })
-        // }
+        // })
 
         async function changeWeather(city) {
-            let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=fc1927bdff110fdc4405bc2e4a1f29c6`
+            let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=fc1927bdff110fdc4405bc2e4a1f29c6`;
             let data = await fetch(apiUrl).then(res => res.json());
             var  city = document.querySelector(".city");
             var country = document.querySelector(".country");
@@ -143,13 +146,13 @@
             time.innerText = new Date().toLocaleString('vi');
             temp.innerText =Math.round((data.main.temp - 273.15));
             desc.innerText = data.weather[0].main;
-            vision.innerText = data.visibility + ` (m)`;
+            vision.innerText = data.visibility + ` (m)`;    
             wind.innerText = data.wind.speed + ` (m/s)`;
             sun.innerText = data.main.humidity + `%`;
-            let newBackgroundURL = "imgs/cold.jpg";
+            let newBackgroundURL = "imgs/warm.jpeg";
             if(Math.round((data.main.temp - 273.15)) <= 22 ){
                  newBackgroundURL = "imgs/cold.jpg";
-            } else if(Math.round((data.main.temp - 273.15)) <= 33 ){
+            } else if(Math.round((data.main.temp - 273.15)) <= 32 ){
                  newBackgroundURL = "imgs/warm.jpeg";
             } else{
                  newBackgroundURL = "imgs/hot.webp";
@@ -166,7 +169,18 @@
                 search.value='';
            }
         })
-        
+
+        // btn.addEventListener('blur', (e) => {
+        //     var items = document.querySelectorAll(".item");
+        //     items.forEach((e) => {
+        //         e.addEventListener('click', (e)=>{
+        //             removeItems();
+        //             changeWeather(e.target.innerText);
+        //             search.value='';
+        //         })
+        //     })
+        //     removeItems();
+        // })
         
         changeWeather("ho chi minh");
 

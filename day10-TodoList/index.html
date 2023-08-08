@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="todoList">
+            <div class="add">
+                <input class ="input__add" maxlength="100" placeholder="Enter your todo..." type="text">
+                <button class="btn__add">
+                    Add
+                </button>
+            </div>
+            <div class="list">
+               
+            </div>
+        </div>
+    </div>
+    <script>
+        let input = document.querySelector(".input__add");
+        let btnAdd = document.querySelector(".btn__add");
+        var todoList = document.querySelector(".list");
+        var deleteIcons = document.querySelectorAll(".fa-regular");
+        var items = document.querySelectorAll(".item");
+        
+        function createNewTodo(value){
+            let newTodo = document.createElement('div');
+            newTodo.classList.add('item');
+            newTodo.innerHTML = `
+                    <p> ${value} </p>
+                    <i class="fa-regular fa-trash-can"></i>
+            `
+            todoList.insertAdjacentElement('beforeend', newTodo);
+            deleteIcons = document.querySelectorAll(".fa-regular");
+        }
+
+        function removeTodo(){
+            const parent = this.closest('.item');
+            if (parent) {
+                parent.remove();
+            }
+        }
+        function done(){
+            const p = this.querySelector('p');
+            if(p) {
+                p.classList.toggle('did');
+            }
+        }
+        btnAdd.addEventListener('click',() => {
+            if(input.value.trim() !== ''){
+               createNewTodo(input.value.trim());
+               input.value = '';
+               deleteIcons.forEach((e) => {
+                    e.removeEventListener('click', removeTodo )
+                    e.addEventListener('click',removeTodo) 
+                })
+
+                todoList.querySelectorAll('.item').forEach((e)=>{
+                    e.removeEventListener('click', done )
+                    e.addEventListener('click',done) 
+                })
+            }
+        })
+        input.addEventListener('keypress', (e)=>{
+            console.log(e);
+            if(e.code == 'Enter'){
+                if(input.value.trim() !== ''){
+                createNewTodo(input.value.trim());
+                input.value = '';
+                    deleteIcons.forEach((e) => {
+                            e.removeEventListener('click', removeTodo )
+                            e.addEventListener('click',removeTodo) 
+                        })
+
+                    todoList.querySelectorAll('.item').forEach((e)=>{
+                        e.removeEventListener('click', done )
+                        e.addEventListener('click',done) 
+                    })
+                }
+            }
+        })
+
+        // deleteIcons.forEach((e, index) => {
+        //     e.addEventListener('click',removeTodo) 
+        // })
+
+        
+        
+    </script>
+    
+</body>
+</html>
