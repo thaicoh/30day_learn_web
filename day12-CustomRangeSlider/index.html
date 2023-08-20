@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom range slider</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Custom Range Slider</h1>
+        <div class="range">
+            <div class="text">60%</div>
+            <span></span>
+        </div>
+    </div>
+    <script>
+        let range = document.querySelector('.range');
+        let text = document.querySelector('.text');
+        let span = document.querySelector('.range span');
+        let ismove = false;
+        let container = document.querySelector(".container")
+        let value = 60;
+        container.style.backgroundColor = `rgba(255,255,255,${value/100})`
+        function updateValue(value){
+            text.innerHTML = `${value}%`;
+            span.style.width = `${value}%`;
+            container.style.backgroundColor = `rgba(255,255,255,${value/100})`
+        }
+        // text.addEventListener('selectstart', (e)=>{
+        //     e.preventDefault();
+        // })
+        range.addEventListener('mousedown', (e)=>{
+            ismove = true;
+
+        })
+        range.addEventListener('mousemove', (e) => {
+            if( ismove == false ) return;
+            // console.log('left', range.offsetLeft)
+            // console.log('width', range.offsetWidth)
+            // console.log(e)
+            value = (e.screenX - range.offsetLeft)/range.offsetWidth * 100;
+            value = Math.round(value)
+            updateValue(value)
+            
+        })
+        range.addEventListener('click', (e)=>{
+            value = (e.screenX - range.offsetLeft)/range.offsetWidth * 100;
+            value = Math.round(value)
+            updateValue(value)
+        })
+        range.addEventListener('mouseleave', (e) => {
+            ismove = false;
+        })
+        range.addEventListener('mouseup', (e) => {
+            ismove = false;
+        })
+    </script>
+</body>
+</html>

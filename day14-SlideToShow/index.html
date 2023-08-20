@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.min.css">
+    <title>slider show</title>
+</head>
+<body>
+    <div class="container">
+        <div class="slider">
+            <div class="img__show">
+                <img src="img/4.jpeg" alt="">
+                <div class="btn__pre"><i class="fa-solid fa-angle-left"></i></div>
+                <div class="btn__next"><i class="fa-solid fa-angle-right"></i></div>
+            </div>
+            <div class="list__img">
+                <img  src="img/1.jpeg" alt="">
+                <img src="img/2.jpeg" alt="">
+                <img src="img/3.webp" alt="">
+                <img src="img/4.jpeg" alt="">
+                <img src="img/5.jpeg" alt="">
+                <img src="img/6.jpeg" alt="">
+                <img src="img/7.webp" alt="">
+                <img src="img/8.jpeg" alt="">
+            </div>
+        </div>
+        <div class="full__img" >
+            <div class="img__show">
+                <img class="imgFull" src="img/4.jpeg" alt="">
+                <i class="fa-regular fa-circle-xmark"></i>
+                <div class="btn__pre pre2"><i class="fa-solid fa-angle-left"></i></div>
+                <div class="btn__next next2"><i class="fa-solid fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let imgShow = document.querySelector('.img__show img');
+        let listImg = document.querySelectorAll('.list__img img');
+        let pre = document.querySelector('.btn__pre i');
+        let next = document.querySelector('.btn__next i');
+        let full = document.querySelector('.full__img');
+        let fullImg = document.querySelector('.imgFull');
+        let slider = document.querySelector('.slider');
+        let closeBtn = document.querySelector('.fa-circle-xmark');
+        let pre2 = document.querySelector('.pre2');
+        let next2 = document.querySelector('.next2');
+        let index = 0;
+        changeImg(index);
+
+        setInterval(() => {
+            if(index == listImg.length - 1){
+                index = 0;  
+            } else{
+                index += 1;
+            }
+            changeImg(index);
+        }, 4000);
+        
+        function changeImg(i){
+            if(imgShow.src !== listImg[i].src){
+                listImg.forEach((e) => {
+                    e.classList.remove('show');
+                })
+                listImg[i].classList.add('show');
+            }
+            imgShow.src = listImg[i].src;
+        }
+        
+        listImg.forEach((element, i) => {
+            element.addEventListener('mousedown', (e)=>{
+                // console.log(e, i);
+                index = i;
+                changeImg(index);
+            })
+        });
+
+        pre.addEventListener('click', (e)=>{
+            if(index == 0){
+                index = listImg.length - 1;  
+            } else{
+                index -= 1;
+            }
+            changeImg(index);
+        })
+        next.addEventListener('click', (e)=>{
+            if(index == listImg.length - 1){
+                index = 0;  
+            } else{
+                index += 1;
+            }
+            changeImg(index);
+        })
+
+        imgShow.addEventListener('click', (e)=>{
+            slider.style.display = 'none';
+            full.style.display = 'flex';
+            fullImg.src = listImg[index].src; 
+        })
+        closeBtn.addEventListener('click', (e)=>{
+            slider.style.display = 'block';
+            full.style.display = 'none';
+        })
+
+        pre2.addEventListener('click', (e)=>{
+            if(index == 0){
+                index = listImg.length - 1;  
+            } else{
+                index -= 1;
+            }
+            fullImg.src = listImg[index].src; 
+            changeImg(index);
+        })
+        next2.addEventListener('click', (e)=>{
+            if(index == listImg.length - 1){
+                index = 0;
+            } else{
+                index += 1;
+            }
+            fullImg.src = listImg[index].src; 
+            changeImg(index);
+        })
+
+    </script>
+</body>
+</html>

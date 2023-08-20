@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Toast Notification</title>
+</head>
+<body>
+    <div class="container">
+        <button class="btn1">Show Success</button>
+        <button class="btn2">Show Warning</button>
+        <button class="btn3">Show Error</button>
+
+        <div class="notification_box">
+        </div>
+    </div>
+    <script>
+        let btnError = document.querySelector('.btn3')
+        let btnWarning = document.querySelector('.btn2')
+        let btnSuccess = document.querySelector('.btn1')
+        let box = document.querySelector('.notification_box')
+
+        btnError.addEventListener('click', () => {
+            let e = show('error');
+            animation(e);
+        })
+        btnWarning.addEventListener('click', () => {
+            let e = show('warning');
+            animation(e);
+        })
+        btnSuccess.addEventListener('click', () => {
+            let e = show('success');
+            animation(e);
+        })
+        function animation(e){
+            setTimeout(()=>{
+                e.classList.add('animation1')
+            }, 100)
+            setTimeout(()=>{
+                    e.classList.add('animation2')
+            }, 600)
+            setTimeout(()=>{
+                     e.querySelector('span').classList.add('timeline');
+            }, 1000)
+            setTimeout(()=>{
+                    e.classList.remove('animation2')
+            }, 5000)
+            setTimeout(()=>{
+                    e.classList.remove('animation1')
+            }, 5500)
+            setTimeout(()=>{
+                remove(e);
+            },6000)
+        }
+        function remove(e){
+            e.remove();
+        }
+
+        function show( style ){
+            if(style === 'error'){
+                box.insertAdjacentHTML('beforeend', 
+                `
+                    <div class="notification error">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <p> This is a error message! </p>
+                        <span></span>
+                    </div>
+                `
+                )
+                let e =  box.querySelectorAll('.error')
+                console.log(e[e.length -1])
+                return e[e.length -1]
+            }
+            if(style === 'warning'){
+                box.insertAdjacentHTML('beforeend', 
+                `
+                    <div class="notification warning">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <p> This is a warning message! </p>
+                        <span></span>
+                    </div>
+                `
+                )
+                let e =  box.querySelectorAll('.warning')
+                console.log(e[e.length -1])
+                return e[e.length -1]
+            }
+            if(style === 'success'){
+                box.insertAdjacentHTML('beforeend', 
+                `
+                    <div class="notification success">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <p> This is a success message! </p>
+                        <span></span>
+                    </div>
+                `
+                )
+                let e =  box.querySelectorAll('.success')
+                console.log(e[e.length -1])
+                return e[e.length -1]
+            }
+            
+        }
+
+
+    </script>
+    
+</body>
+</html>
