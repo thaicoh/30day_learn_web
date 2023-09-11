@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color:antiquewhite;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search{
+    width: 100%;
+    background-color: white;
+    font-size: x-large;
+    padding: 5px;
+    border-radius: 10px;
+    margin:  10px 0;
+}
+.search input{
+    width: 89%;
+    height: 100%;
+    border: none;
+    font-size: x-large;
+}
+input:focus{
+    outline: none;
+}
+.box{
+    text-align: center;
+    width: 450px;
+    height: 650px;
+    background-color: aliceblue;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 10px;
+}
+.listProducts{
+    height: 80%;
+    overflow-y:scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.item{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+.item img{
+    width: 80px;
+    height: 80px;
+}
+.info{
+    width: 75%;
+    text-align: center
+}
+.price , .title{
+    font-size: 17px;
+    
+}
+.title {
+    font-weight: 600;
+    font-size: 17px;
+}
+.notfound{
+    margin-top: 40%;
+    color: rgb(150, 153, 156);
+    display: none;
+}

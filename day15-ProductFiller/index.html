@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.min.css">
+    <title>Product Fillter</title>
+</head>
+
+
+
+<body>
+
+    <div class="container">
+        <div class="box">
+            <h1>
+                Live Product Filter
+            </h1>
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text">
+            </div>
+            <div class="listProducts">
+                <!-- <div class="item">
+                    <img src="testImg.png" alt="">
+                    <div class="info">
+                        <div class="title">Khong an com chien</div>
+                        <div class="price">$ 100</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="testImg.png" alt="">
+                    <div class="info">
+                        <div class="title">Khong an com chien</div>
+                        <div class="price">$ 100</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="testImg.png" alt="">
+                    <div class="info">
+                        <div class="title">Khong an com chien</div>
+                        <div class="price">$ 100</div>
+                    </div>
+                </div> -->
+                <div class="notfound">
+                    <h2>not found</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let input = document.querySelector('.search input');
+
+        async function getAPI() {
+            const url = 'https://fakestoreapi.com/products';
+            let data = await fetch(url).then(res => res.json());
+            console.log(data);
+            var listProducts = document.querySelector('.listProducts');
+            data.forEach(element => { 
+                render(listProducts,element.image,element.title, element.price)
+            });
+        }
+
+        function render(listProducts, img, title, price){
+            listProducts.insertAdjacentHTML('beforeend', `
+                <div class="item">
+                    <img src="${img}" alt="">
+                    <div class="info">
+                        <div class="title">${title}</div>
+                        <div class="price">$ ${price}</div>
+                    </div>
+                </div>
+            `)
+            listProducts = document.querySelector('.listProducts');
+        }
+        input.addEventListener('input', (e) => {
+            let item = document.querySelectorAll('.item');
+            let i = 0;
+            item.forEach(element => { 
+                if(!element.innerText.toLowerCase().includes(input.value.toLowerCase().trim())){
+                    element.style.display = 'none';
+                    i++;
+                } else {
+                    element.style.display = 'flex';
+                }
+            })
+
+            if(i == item.length){
+                document.querySelector('.notfound').style.display = 'block';
+            }
+            else{
+                document.querySelector('.notfound').style.display = 'none';
+            }
+        })
+
+        getAPI();
+
+    </script>
+</body>
+</html>
