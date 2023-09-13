@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show on scroll</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="home">
+            <h1 class="h1 ef">NguyenThaiHoc</h1>
+            <p class="ef" >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem accusantium dicta nisi possimus minima at consequuntur aliquid quod est odit! Libero consequatur hic vero aperiam repellat reiciendis velit ducimus accusantium!</p>
+        </div>
+
+        <div class="info ">
+            <div class="title ef">
+                <h1>Title</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, fuga, sequi nisi iure soluta dolorem earum cupiditate provident harum distinctio voluptate vero repellat eos, deleniti at quam consequatur sapiente dolorum?</p>
+            </div>
+            <div class="title ef">
+                <h1>Title</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, fuga, sequi nisi iure soluta dolorem earum cupiditate provident harum distinctio voluptate vero repellat eos, deleniti at quam consequatur sapiente dolorum?</p>
+            </div>
+        </div>
+
+        <div class="person">
+            <div class="bg"></div>
+            <div class="listCard">
+                <div class="card ef">
+                    <h1>Person 1</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo voluptatem accusamus similique enim in recusandae laborum cupiditate nam quaerat ipsam</p>
+                </div>
+                <div class="card ef">
+                    <h1>Person 2</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo voluptatem accusamus similique enim in recusandae laborum cupiditate nam quaerat ipsam</p>
+                </div>
+                <div class="card ef">
+                    <h1>Person 3</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo voluptatem accusamus similique enim in recusandae laborum cupiditate nam quaerat ipsam</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let homeH1 = document.querySelector(".home h1");
+        let homep = document.querySelector(".home p");
+
+        function kiemTraPhanTuTrongViewport(ef) {
+            var rect = ef.getBoundingClientRect();
+            
+            // Kiểm tra xem phần tử có nằm trong khung nhìn của trình duyệt hay không
+            let viewHeight = window.innerHeight || document.documentElement.clientHeight
+
+            return (
+                (rect.top <= 0 && rect.bottom >= 0) ||
+                (rect.bottom >= viewHeight && rect.top <= viewHeight) ||
+                (rect.top >= 0 && rect.bottom <= viewHeight)
+            )
+        }
+        function loop(){
+            document.querySelectorAll('.ef').forEach((e) => {
+                // console.log(e)
+                if(!kiemTraPhanTuTrongViewport(e)){
+                    // console.log('chay')
+                    e.classList.add('start');
+                }else{
+                    e.classList.remove('start');
+                }
+            })
+        }
+
+        window.onscroll = loop;
+        
+
+    </script>
+</body>
+</html>

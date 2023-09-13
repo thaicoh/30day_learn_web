@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.home{
+    position: relative;
+    background-color: rgb(101, 208, 101);
+    color: white;
+    padding: 70px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    flex-direction: column;
+}
+.home p, .home .h1{
+    position: absolute;
+    padding: 10px;
+    transition: 1s;
+}
+.home p.start{
+    top: 50%;
+    left: -3000px;
+}
+.home .h1.start{
+    top: 40%;
+    left: -1000px;
+}
+
+.home p{
+    top: 50%;
+    left: 5% ;
+}
+
+.home .h1{
+    top: 40%;
+    left: 5%   ;
+}
+
+/* .home.ef h1, .home.ef p {
+    left: 5%;
+} */
+
+
+.info{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 94vh;
+    width: 100%;
+    position: relative;
+}
+.info .title{
+    position: absolute;
+    margin: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(28, 27, 27);
+    width: 30%;
+    transition: 1s;
+}
+
+.title:nth-child(1){
+    left: 17%;
+}
+.title:nth-child(2){
+    right: 17%;
+}
+.title.start:nth-child(1){
+    left: -117%;
+}
+.title.start:nth-child(2){
+    right: -117%;
+}
+
+
+.person{
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bg{
+    background-color: greenyellow;
+    height: 50%;
+    width: 100vw;
+}
+.listCard{
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    top: 50%;
+    right: 50%;
+    z-index: 999;
+    transform: translate(50%, -50%);
+}
+.person .card{
+    background-color: #fff;
+    z-index: 999;
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    transition: 1s;
+}
+.card.start{
+    font-size: 0px;
+    width: 5px;
+    height: 5px;
+}
